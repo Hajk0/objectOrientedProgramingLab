@@ -85,7 +85,7 @@ public:
         cout << "Horse power: " << this->power << "\nMax speed: " << this->maxSpeed << "\nPrice: " << this->price << endl;
     }
 
-    void siemano()
+    void helloOwner()
     {
         cout << this->owner->hello() << ", owner of this car." << endl;
     }
@@ -102,7 +102,7 @@ int main()
     vehicle0.info();
     cout << vehicle0.carPrice() << endl;
     vehicle0.changingOwner(&person1);
-    vehicle0.siemano();
+    vehicle0.helloOwner();
 
 
     return 0;

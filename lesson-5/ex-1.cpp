@@ -49,7 +49,7 @@ class Euro : public Currency {
         {
             if (this->value - value / cantor.EuroToRate(currency) < 0)
             {
-                std::cout << "Balance can not be lower than 0" << endl;
+                std::cout << "Balance can not be lower than 0" << std::endl;
                 return this;
             }
             this->value -= value / cantor.EuroToRate(currency);
@@ -73,14 +73,21 @@ class Euro : public Currency {
 
         float DollarExchangeRate()
         {
-
+            return cantor.EuroToRate("USD");
         }
     
 };
 
 int main() {
     
-    
+    FakeCantor cantor = FakeCantor();
+    Euro euro = Euro(100.0, cantor);
+
+    std::cout << euro.Abbreviation() << ", " << euro.Symbol() << ", " << euro.DollarExchangeRate() << ", " << euro.Balance() << std::endl;
+
+    euro = *euro.AddedCurrency(50.0, "USD");
+
+    std::cout << euro.Balance() << std::endl;
 
     return 0;
 }

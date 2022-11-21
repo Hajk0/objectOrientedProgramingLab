@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iomanip>
 #include <string>
+#include <cmath>
 
 class FakeCantor {
     private:
@@ -83,11 +84,13 @@ int main() {
     FakeCantor cantor = FakeCantor();
     Euro euro = Euro(100.0, cantor);
 
-    std::cout << euro.Abbreviation() << ", " << euro.Symbol() << ", " << euro.DollarExchangeRate() << ", " << euro.Balance() << std::endl;
+    std::cout << "Abbreviation: " << euro.Abbreviation() << ", \nSymbol: " << euro.Symbol() << ", \nEuro to dolar rate: " << euro.DollarExchangeRate() << ", \nBalance: " << euro.Balance() << std::endl;
 
     euro = *euro.AddedCurrency(50.0, "USD");
+    std::cout << "Balance after adding 50 USD" << euro.Balance() << std::endl;
 
-    std::cout << euro.Balance() << std::endl;
+    euro = *euro.SubtractedCurrency(50, "GBP");
+    std::cout << "Balance after subtracting 50 GBP" << euro.Balance() << std::endl;
 
     return 0;
 }

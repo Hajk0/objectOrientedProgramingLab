@@ -7,7 +7,9 @@ int main()
 {
     ElvenCalories group1 = ElvenCalories("data1.txt");
 
-    cout << "Max in group 1: " << group1.Max() << endl;
+    int result = group1.Max();
+
+    cout << "Max calories in this group of elves: " << result;
 
     return 0;
 }

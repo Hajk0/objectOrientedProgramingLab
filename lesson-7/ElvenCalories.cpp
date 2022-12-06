@@ -1,12 +1,13 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
+#include <stdlib.h>
 #include "ElvenCalories.hpp"
 
 using namespace std;
 
 ElvenCalories::ElvenCalories(string fileName)
 {
-    this->max = 0;
     this->fileName = fileName;
 }
 
@@ -14,17 +15,19 @@ int ElvenCalories::Max()
 {
     ifstream file(this->fileName);
     string buf;
-    int tmpmax = 0;
+    int tmpmax = 0, i = 0, max = 0;
 
     while (getline(file, buf))
     {
         if (buf.empty())
         {
-            if (tmpmax > this->max)
+            if (tmpmax > max)
             {
-                this->max = tmpmax;
-                tmpmax = 0;
+                max = tmpmax;
             }
+            //cout << "Elf " << i << ": " << tmpmax << endl;
+            //i++;
+            tmpmax = 0;
         }
         else
         {
@@ -33,6 +36,7 @@ int ElvenCalories::Max()
         
     }
     
+    file.close();
     
     return max;
 }

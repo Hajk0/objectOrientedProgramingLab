@@ -1,3 +1,6 @@
+#ifndef PLAYER_HPP
+#define PLAYER_HPP
+
 #include <iostream>
 #include "Board.hpp"
 
@@ -10,7 +13,11 @@ private:
     bool first;
     string name;
 public:
-    Player(string name="User 1", bool first=true, char symbol='X');
+    Player();
+    Player(string name, bool first, char symbol);
     void move(Board *board, int position);
+    char playersSymbol();
     
 };
+
+#endif

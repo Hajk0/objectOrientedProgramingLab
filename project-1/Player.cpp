@@ -1,6 +1,14 @@
 #include "Player.hpp"
 
-Player::Player(string name="User 1", bool first=true, char symbol='X'){
+Player::Player()
+{
+    this->name = "Player";
+    this->first = true;
+    this->symbol = 'X';
+}
+
+Player::Player(string name="User 1", bool first=true, char symbol='X')
+{
     this->name = name;
     this->first = first;
     this->symbol = symbol;
@@ -8,10 +16,14 @@ Player::Player(string name="User 1", bool first=true, char symbol='X'){
 
 void Player::move(Board *board, int position)
 {
-    if (position <= 0 || position > 9)
+    if (position < 0 || position >= 9)
     {
         return;
     }
     
-    
+}
+
+char Player::playersSymbol()
+{
+    return this->symbol;
 }

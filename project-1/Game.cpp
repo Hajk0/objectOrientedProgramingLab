@@ -35,10 +35,12 @@ void Game::switchPlayer()
 {
     if (this->activePlayer == this->player0)
     {
+        player1 = player1->usedCellsCopy(player0);
         this->activePlayer = this->player1;
     }
     else
     {
+        player0 = player0->usedCellsCopy(player1);
         this->activePlayer = this->player0;
     }
 }

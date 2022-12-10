@@ -16,6 +16,7 @@ public:
     Cell *contentChange(char newSymbol);
     char content();
     Cell *lock();
+    bool ifLocked();
 };
 
 #endif

@@ -47,3 +47,8 @@ Cell *Cell::lock()
     this->locked = true;
     return this;
 }
+
+bool Cell::ifLocked()
+{
+    return this->locked;
+}

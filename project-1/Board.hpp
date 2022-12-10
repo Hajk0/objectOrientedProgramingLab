@@ -12,8 +12,10 @@ private:
     Cell board[3][3];
 public:
     Board();
-    Board *move(int position);
+    Board *move(int position, char symbol);
     void display();
+    bool checkIfEnd();
+    
 };
 
 #endif

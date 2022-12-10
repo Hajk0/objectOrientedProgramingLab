@@ -1,29 +1,41 @@
 #include "Player.hpp"
+#include "Board.hpp"
+#include "Cell.hpp"
 
 Player::Player()
 {
     this->name = "Player";
-    this->first = true;
+    //this->first = true;
     this->symbol = 'X';
 }
 
-Player::Player(string name="User 1", bool first=true, char symbol='X')
+Player::Player(string name, char symbol)
 {
     this->name = name;
-    this->first = first;
     this->symbol = symbol;
 }
 
-void Player::move(Board *board, int position)
+Board *Player::move(Board board, int position)
 {
-    if (position < 0 || position >= 9)
-    {
-        return;
-    }
-    
+    this->board = board.move(position, this->symbol);
+    cout << "position: " << position << endl;
+    return this->board;
 }
 
 char Player::playersSymbol()
 {
     return this->symbol;
+}
+
+int Player::input()
+{
+    cout << "Pick cell number: " << endl;
+    int cellNumber;
+    
+    while (!(cin >> cellNumber) || cellNumber < 0 || cellNumber >= 9)
+    {
+        cout << "Pick existing cell (numbers 0-8):" << endl;
+    }
+
+    return cellNumber;
 }

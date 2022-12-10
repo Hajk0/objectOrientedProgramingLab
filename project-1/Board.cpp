@@ -1,4 +1,5 @@
 #include "Board.hpp"
+#include "Cell.hpp"
 #include <iostream>
 
 using namespace std;
@@ -16,14 +17,17 @@ Board::Board()
     
 }
 
-Board* Board::move(int position)
+Board* Board::move(int position, char symbol)
 {
     if (position < 0 || position >= 9)
     {
         return this;
     }
+    cout << "symbol: " << symbol << endl;
     
-    board[position/3][position%3] = *board[position/3][position%3].contentChange('X');
+    board[position/3][position%3] = *board[position/3][position%3].contentChange(symbol);
+
+    cout << "symbol: " << board[position/3][position%3].content() << endl;
 
     return this;
 }
@@ -40,4 +44,26 @@ void Board::display()
     cout << "\t\t\t\t     |     |     \n";
     cout << "\t\t\t\t  " << this->board[2][0].content() << "  |  " << this->board[2][1].content() <<"  |  " << this->board[2][2].content() << " \n";
     cout << "\t\t\t\t     |     |     \n";
+}
+
+bool Board::checkIfEnd()
+{
+    for (int i = 0; i < 3; i++)
+    {
+        if (this->board[i][0].content() == this->board[i][1].content() && this->board[i][1].content() == this->board[i][2].content() && this->board[i][0].content() != ' ')
+        {
+            return true;
+        }
+        else if (this->board[0][i].content() == this->board[1][i].content() && this->board[1][i].content() == this->board[2][i].content() && this->board[0][i].content() != ' ')
+        {
+            return true;
+        }
+    }
+    
+    if (this->board[0][0].content() == this->board[1][1].content() && this->board[1][1].content() == this->board[2][2].content() && this->board[0][0].content() != ' ' || this->board[2][0].content() == this->board[1][1].content() && this->board[1][1].content() == this->board[0][2].content() && this->board[2][0].content() != ' ')
+    {
+        return true;
+    }
+    
+    return false;
 }

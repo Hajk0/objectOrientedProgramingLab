@@ -5,7 +5,9 @@
 Game::Game(Player *player0, Player *player1, Board *board)
 {
     this->player0 = player0;
+    //this->player0 = Player();
     this->player1 = player1;
+    //this->player1 = &Player();
     this->activePlayer = player0;
     this->board = board;
 }
@@ -17,7 +19,6 @@ void Game::game()
     for (int i = 0; i < 9; i++)
     {
         move = this->activePlayer->input();
-        cout << "move: " << move << endl;
         this->board = this->activePlayer->move(*this->board, move);
         this->board->display();
         if (this->board->checkIfEnd())
@@ -27,6 +28,11 @@ void Game::game()
         }
         
         this->switchPlayer();
+        if (i == 8)
+        {
+            cout << "Game has been ended with a tie." << endl;
+        }
+        
     }
     
 }

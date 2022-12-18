@@ -4,14 +4,20 @@
 
 Player::Player()
 {
-    this->name = "Player";
-    this->symbol = 'X';
+    cout << "\nPlayer creation interface.\n-----------------------------------" << endl;
+    cout << "Enter players name." << endl;
+    cin >> this->name;
+    //this->name = "Player";
+    cout << "Enter players symbol." << endl;
+    cin >> this->symbol;
+    //this->symbol = 'X';
     this->usedCells[9];
     for (int i = 0; i < 9; i++)
     {
         this->usedCells[i] = false;
     }
     
+    cout << "----------------------------------" << endl;
 }
 
 Player::Player(string name, char symbol)
@@ -28,9 +34,8 @@ Player::Player(string name, char symbol)
 
 Board *Player::move(Board board, int position)
 {
-    this->board = board.move(position, this->symbol);
-    cout << "position: " << position << endl;
-    return this->board;
+    //this->board = board.move(position, this->symbol);
+    return board.move(position, this->symbol);//this->board;
 }
 
 char Player::playersSymbol()
@@ -40,16 +45,13 @@ char Player::playersSymbol()
 
 int Player::input()
 {
+    cout << "Player " << this->name << " turn." << endl;
     cout << "Pick cell number: " << endl;
     int cellNumber;
-    for (int i = 0; i < 9; i++)
-    {
-        cout << i << ": " << this->usedCells[i] << endl;
-    }
     
     while (!(cin >> cellNumber) || cellNumber < 0 || cellNumber >= 9 || this->usedCells[cellNumber] == true)
     {
-        cout << "Pick existing cell (numbers 0-8)." << endl;
+        cout << "Pick existing cell (numbers 0-8) and didn't used yet." << endl;
         cin.clear();
         cin.sync();
     }

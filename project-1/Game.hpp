@@ -1,3 +1,6 @@
+#ifndef GAME_HPP
+#define GAME_HPP
+
 #include <iostream>
 #include "Player.hpp"
 #include "Board.hpp"
@@ -20,3 +23,4 @@ public:
     void switchPlayer();
 };
 
+#endif

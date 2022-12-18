@@ -23,11 +23,8 @@ Board* Board::move(int position, char symbol)
     {
         return this;
     }
-    cout << "symbol: " << symbol << endl;
-    
+        
     board[position/3][position%3] = *board[position/3][position%3].contentChange(symbol);
-
-    cout << "symbol: " << board[position/3][position%3].content() << endl;
 
     return this;
 }

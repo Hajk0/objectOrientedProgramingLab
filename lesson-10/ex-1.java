@@ -29,25 +29,35 @@ class Shiritori
 
     public void play(String word)
     {
-        String prevWord = words.get(words.size() - 1);
-        if (word.charAt(0) == prevWord.charAt(prevWord.length() - 1))
+        if (words.isEmpty())
         {
-            for (String w : words) 
-            {
-                if (word == w)
-                {
-                    this.gameOver = true;
-                    System.out.println("Game over");
-                }
-            }
+            this.words.add(word);
         }
         else
         {
-            this.gameOver = true;
-            System.out.println("Game over");
-        }
+            String prevWord = words.get(words.size() - 1);
 
-        this.words.add(word);
+            if (word.charAt(0) == prevWord.charAt(prevWord.length() - 1))
+            {
+                for (String w : words) 
+                {
+                    if (word == w)
+                    {
+                        this.gameOver = true;
+                        System.out.println("Game over");
+                        return;
+                    }
+                }
+                this.words.add(word);
+
+            }
+            else
+            {
+                this.gameOver = true;
+                System.out.println("Game over");
+            }
+        }
+        
 
     }
 
